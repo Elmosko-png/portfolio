@@ -1,12 +1,14 @@
 /* ===== 1. Colours and fonts: change the whole site from here ===== */
 :root {
-  /* Palette: sand (60%), driftwood brown (30%), sea cyan (10%), sunset rust for headlines */
+  /* Palette: espresso (60%), driftwood brown (30%), sea cyan (10%), sunset rust for headlines */
+  --color-text: #F3EBE2;        /* warm off-white body text: 15.1:1 on espresso */
+  --color-background: #1C1714;  /* 60%: espresso page background */
   --color-surface: #624A43;     /* 30%: brown header and footer */
   --color-on-surface: #ffffff;  /* white text on the brown: 8.1:1 */
   --color-accent: #3FABC9;      /* 10%: cyan button */
   --color-on-accent: #1f2937;   /* dark text on the cyan button: 5.5:1 */
-  --color-link: #624A43;        /* brown links on parchment: 6.4:1 */
-  --color-highlight: #C45A3D;   /* rust headline: 3.4:1 on parchment, large text only */
+  --color-link: #3FABC9;        /* cyan links on espresso: 6.7:1 */
+  --color-highlight: #E07A5F;   /* lighter rust headline: 6.0:1 on espresso */
   --font-main: system-ui, sans-serif;
 }
 
