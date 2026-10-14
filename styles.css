@@ -1,0 +1,90 @@
+/* ===== 1. Colours and fonts: change the whole site from here ===== */
+:root {
+  /* Palette: sand (60%), driftwood brown (30%), sea cyan (10%), sunset rust for headlines */
+  --color-surface: #624A43;     /* 30%: brown header and footer */
+  --color-on-surface: #ffffff;  /* white text on the brown: 8.1:1 */
+  --color-accent: #3FABC9;      /* 10%: cyan button */
+  --color-on-accent: #1f2937;   /* dark text on the cyan button: 5.5:1 */
+  --color-link: #624A43;        /* brown links on parchment: 6.4:1 */
+  --color-highlight: #C45A3D;   /* rust headline: 3.4:1 on parchment, large text only */
+  --font-main: system-ui, sans-serif;
+}
+
+/* ===== 2. Base: applies to everything ===== */
+* {
+  box-sizing: border-box;  /* padding counts inside an element's width, not added on top */
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-main);
+  color: var(--color-text);
+  background: var(--color-background);
+  line-height: 1.6;
+}
+
+a {
+  color: var(--color-link);
+}
+
+/* ===== 3. Header and navigation (phone first) ===== */
+header {
+  background: var(--color-surface);
+  padding: 1rem;
+}
+
+nav {
+  display: flex;      /* lay the links out in a row */
+  flex-wrap: wrap;    /* let them drop to a second line on narrow phones */
+  gap: 1rem;          /* space between the links */
+}
+
+nav a {
+  color: var(--color-on-surface);
+  text-decoration: none;  /* remove the underline */
+  font-weight: 600;
+}
+
+/* ===== 4. Main content ===== */
+main {
+  padding: 3rem 1rem;
+  max-width: 40rem;  /* stop lines getting too long to read on wide screens */
+  margin: 0 auto;    /* centre the content */
+}
+
+h1 {
+  color: var(--color-highlight);
+  font-size: 2rem;
+  line-height: 1.2;
+}
+
+/* The call-to-action link, styled as a button */
+main a {
+  display: inline-block;
+  background: var(--color-accent);
+  color: var(--color-on-accent);  /* dark text: white on cyan would only be 2.7:1 */
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+/* ===== 5. Footer ===== */
+footer {
+  background: var(--color-surface);
+  color: var(--color-on-surface);
+  padding: 1rem;
+  text-align: center;
+  font-size: 0.875rem;
+}
+
+/* ===== 6. Bigger screens: these rules only apply 768px wide and up ===== */
+@media (min-width: 768px) {
+  h1 {
+    font-size: 3rem;
+  }
+
+  header {
+    padding: 1rem 2rem;
+  }
+}
