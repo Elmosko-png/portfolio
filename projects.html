@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Projects | Drew Morales, Backend Developer</title>
+  <meta name="description" content="MiniRADS, a multi-tenant SaaS built with .NET, Cosmos DB, Stripe and Azure, plus how I run a project from plan to launch.">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="projects.html">Projects</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <h1>Projects</h1>
+    <p>Everything here is built in the open on GitHub, one pull request at a time, so you can see how I work as well as what I build.</p>
+
+    <article class="card">
+      <h2>MiniRADS <span class="status">In progress</span></h2>
+      <p>A small multi-tenant SaaS platform: one system that many businesses share, where each business can only ever see its own data.</p>
+      <ul>
+        <li><strong>API:</strong> ASP.NET Core, with three kinds of authentication</li>
+        <li><strong>Database:</strong> Cosmos DB, partitioned so each business's data stays separate</li>
+        <li><strong>Portal:</strong> Blazor web app, with end-to-end tests</li>
+        <li><strong>Payments:</strong> Stripe, where only verified webhooks can activate an account</li>
+        <li><strong>Hosting:</strong> Azure, with separate staging and production environments</li>
+      </ul>
+
+      <h3>Roadmap</h3>
+      <ol>
+        <li>Foundations: dev setup and team Git workflow (done)</li>
+        <li>Static hosting on Azure: this portfolio (in progress)</li>
+        <li>API: register, log in, protected endpoints (next)</li>
+        <li>Database: Cosmos DB with tenant isolation</li>
+        <li>Portal: Blazor app with end-to-end tests</li>
+        <li>Payments: Stripe Checkout and webhooks</li>
+        <li>Operations: CI/CD pipeline, monitoring and alerts</li>
+      </ol>
+
+      <p><a href="https://github.com/Elmosko-png/minirads">View MiniRADS on GitHub</a></p>
+    </article>
+
+    <h2>How I work</h2>
+    <ul>
+      <li><strong>Plan first:</strong> work is split into phases, each with a clear goal and a check at the end.</li>
+      <li><strong>Every change reviewed:</strong> nothing goes in without a pull request.</li>
+      <li><strong>Staging before production:</strong> changes land on a test environment first, and only reach the live one once they've been checked.</li>
+      <li><strong>Written down:</strong> a learning log and project notes, so decisions are documented, not just remembered.</li>
+    </ul>
+
+    <a class="button" href="contact.html">Let's talk about your project</a>
+  </main>
+
+  <footer>
+    <p>© 2026 Drew Morales</p>
+  </footer>
+</body>
+</html>
