@@ -1,0 +1,47 @@
+# Deploys the portfolio to Azure Static Web Apps.
+#   PR into stage or main -> a temporary preview copy of the site (deleted when the PR closes)
+#   merge into stage      -> the "stage" environment (staging site)
+#   merge into main       -> production
+
+name: Deploy to Azure Static Web Apps
+
+on:
+  push:
+    branches: [main, stage]
+  pull_request:
+    types: [opened, synchronize, reopened, closed]
+    branches: [main, stage]
+
+jobs:
+  build_and_deploy:
+    # Run for every push, and for PRs that are still open
+    if: github.event_name == 'push' || github.event.action != 'closed'
+    runs-on: ubuntu-latest
+    name: Build and deploy
+    steps:
+      - name: Check out the code
+        uses: actions/checkout@v4
+
+      - name: Deploy to Azure
+        uses: Azure/static-web-apps-deploy@v1
+        with:
+          azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN }}
+          repo_token: ${{ secrets.GITHUB_TOKEN }}  # lets the action comment the preview URL on the PR
+          action: upload
+          app_location: /         # the site's files are at the root of the repo
+          output_location: ""     # plain HTML: no build step, so no build output folder
+          skip_app_build: true
+          # Pushes to stage go to a named "stage" environment; main (and PR previews) use the default rules
+          deployment_environment: ${{ github.event_name == 'push' && github.ref_name == 'stage' && 'stage' || '' }}
+
+  close_pull_request:
+    # When a PR is closed or merged, delete its preview copy
+    if: github.event_name == 'pull_request' && github.event.action == 'closed'
+    runs-on: ubuntu-latest
+    name: Delete the PR preview
+    steps:
+      - name: Close preview environment
+        uses: Azure/static-web-apps-deploy@v1
+        with:
+          azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN }}
+          action: close
